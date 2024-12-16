@@ -285,6 +285,3 @@ BEGIN
     WHERE (@HoTen = '' OR TV.HoTen LIKE '%' + @HoTen + '%')
       AND (@MaThanhVien = '' OR TV.MaThanhVien LIKE '%' + @MaThanhVien + '%')
 END
-
-DROP PROCEDURE IF EXISTS ThanhVien_TimKiem;
-
