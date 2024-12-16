@@ -1,0 +1,115 @@
+﻿@model CLB_TinHoc_64131060.Models.SuKien
+
+@{
+    ViewBag.Title = "Thêm sự kiện (Chủ nhiệm)";
+    Layout = "~/Views/Shared/_LayoutAdmin_64131060.cshtml";
+}
+
+<style>
+    .form-horizontal {
+        margin-top: 150px;
+        margin-bottom: 50px;
+        margin-inline: 450px;
+        font-size: 20px;
+    }
+
+    .form-control {
+        width: 350px;
+        padding: 10px;
+    }
+
+    .name-event,
+    .time-event,
+    .event,
+    .btn-item {
+        display: flex;
+        justify-content: space-between
+    }
+
+    .btn-back,
+    .btn-create {
+        border: 1px solid black;
+        background-color: rgba(41,108,178,255);
+        width: fit-content;
+    }
+
+    .btn-back {
+        padding: 5px;
+        font-size: 17px;
+    }
+
+    .btn:hover {
+        color: lawngreen !important;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="name-event">
+            <div class="form-group">
+                <b>Mã sự kiện</b>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MaSuKien, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MaSuKien, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <b>Tên sự kiện</b>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TenSuKien, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TenSuKien, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="event">
+            <div class="form-group">
+                <b>Mô tả</b>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <b>Người tổ chức</b>
+                <div class="col-md-10">
+                    @Html.DropDownList("NguoiToChuc", null, "-- Thành viên tổ chức --", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.NguoiToChuc, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="time-event">
+            <div class="form-group">
+                <b>Ngày bắt đầu</b>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NgayBatDau, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NgayBatDau, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <b>Ngày kết thúc</b>
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NgayKetThuc, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NgayKetThuc, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="btn-item mt-4">
+            <div class="btn-create col-md-offset-2 col-md-10 ms-3">
+                <input type="submit" value="TẠO SỰ KIỆN" class="btn btn-default text-white" />
+            </div>
+            <div class="btn-back me-3">
+                @Html.ActionLink("QUAY VỀ", "TimKiemSuKien_Admin_64131060")
+            </div>
+        </div>
+    </div>
+}
+
+

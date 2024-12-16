@@ -1,0 +1,111 @@
+﻿@model CLB_TinHoc_64131060.Models.ThanhVienSuKien
+
+@{
+    ViewBag.Title = "Xóa thành viên tham gia (Chủ nhiệm)";
+    Layout = "~/Views/Shared/_LayoutAdmin_64131060.cshtml";
+}
+
+<style>
+    body {
+        font-size: 15px;
+        font-family: Arial, sans-serif;
+    }
+
+    .delete-container {
+        margin-top: 150px !important;
+        width: 60%;
+        margin: 50px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+        .delete-container h2 {
+            text-align: center;
+            color: #d9534f;
+            margin-bottom: 20px;
+        }
+
+        .delete-container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .delete-container th, .delete-container td {
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #ccc;
+        }
+
+        .delete-container th {
+            background-color: rgba(41,108,178,255);
+            color: white;
+        }
+
+    .delete-actions {
+        text-align: center;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        margin: 5px;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .btn-delete {
+        background-color: #d9534f;
+        color: white;
+    }
+
+        .btn-delete:hover {
+            background-color: #c9302c;
+        }
+
+    .btn-back {
+        background-color: #5bc0de;
+        color: white;
+    }
+
+        .btn-back:hover {
+            background-color: #31b0d5;
+        }
+</style>
+
+<div class="delete-container">
+    <h2>XÓA THÀNH VIÊN THAM GIA</h2>
+
+    <h3>Bạn có chắc chắn là muốn xóa ?</h3>
+
+    <table>
+        <tr>
+            <th>Tên sự kiện</th>
+            <td>@Html.DisplayFor(model => model.SuKien.TenSuKien)</td>
+        </tr>
+        <tr>
+            <th>Thành viên</th>
+            <td>@Html.DisplayFor(model => model.ThanhVien.HoTen)</td>
+        </tr>
+        <tr>
+            <th>Thời gian đăng ký</th>
+            <td>@Html.DisplayFor(model => model.NgayDangKy)</td>
+        </tr>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="delete-actions">
+            <input type="submit" value="XÓA" class="btn btn-delete" />
+            @Html.ActionLink("QUAY VỀ", "ThanhVienSuKien_Admin_64131060", null, new { @class = "btn btn-back" })
+        </div>
+    }
+</div>

@@ -1,0 +1,126 @@
+﻿@model IEnumerable<CLB_TinHoc_64131060.Models.SuKien>
+@{
+    ViewBag.Title = "Trang sự kiện (Trợ giảng)";
+    Layout = "~/Views/Shared/_LayoutAssitant_64131060.cshtml";
+    var grid = new WebGrid(source: Model, canPage: true, canSort: false, rowsPerPage: 3);
+    @Scripts.Render("~/Scripts/jquery-1.6.2.min.js")
+}
+
+<style>
+    body {
+        font-size: 15px;
+    }
+
+    .alert-event {
+        font-family: "Oswald", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        margin-top: 150px;
+        margin-left: 20px;
+    }
+
+    .search-form {
+        margin-inline: 20px;
+    }
+
+    th {
+        background-color: rgba(41,108,178,255) !important;
+    }
+
+    tfoot {
+        font-size: 15px;
+    }
+
+        tfoot a {
+            color: black;
+        }
+
+            tfoot a:hover {
+                cursor: pointer;
+                color: red;
+            }
+
+        tfoot tr {
+            text-align: center;
+        }
+
+    .btn-create, .btn-tvsk,.btn-search {
+        margin-left: 20px;
+        background-color: rgba(41,108,178,255);
+        width: fit-content;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+        .btn-create:hover, .btn-tvsk:hover {
+            color: lawngreen !important;
+        }
+    input{
+        padding: 5px;
+    }
+</style>
+
+<h3 class="alert-event">THÔNG TIN CÁC SỰ KIỆN CỦA CÂU LẬC BỘ</h3>
+<div class="d-flex justify-content-between">
+    <div class="d-flex">
+        <div class="btn-create">
+            @Html.ActionLink("THÊM SỰ KIỆN", "Create")
+        </div>
+        <div class="btn-tvsk">
+            @Html.ActionLink("THÀNH VIÊN THAM GIA", "ThanhVienSuKien_Assitant_64131060", "ThanhVienSuKien_Assitant_64131060")
+        </div>
+    </div>
+
+    <div class="search-form">
+        @using (Html.BeginForm("TimKiemSuKien_Assitant_64131060", "SuKien_Assitant_64131060", FormMethod.Get))
+        {
+            <div class="d-flex">
+                <div>
+                    <input type="text" name="tenSuKien" placeholder="Tìm kiếm tên sự kiện..." value="@ViewBag.tenSuKien" />
+                </div>
+                <div>
+                    <input class="btn-search text-white" type="submit" value="TÌM KIẾM" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@if (Model != null && Model.Any())
+{
+    <div>
+        @grid.GetHtml(
+    tableStyle: "table table-bordered table-hover",
+    alternatingRowStyle: "table-row-alternate",
+    columns: grid.Columns(
+        grid.Column("TenSuKien", header: "Tên sự kiện", format: @<text>@item.TenSuKien</text>),
+        grid.Column("MoTa", header: "Mô tả", format: @<text>@item.MoTa</text>),
+        grid.Column("NgayBatDau", header: "Ngày bắt đầu", format: @<text>@item.NgayBatDau.ToString("dd/MM/yyyy")</text>),
+        grid.Column("NgayKetThuc", header: "Ngày kết thúc", format: @<text>@item.NgayKetThuc.ToString("dd/MM/yyyy")</text>),
+        grid.Column("ThanhVien", header: "Thành viên phụ trách", format: @<text>@item.ThanhVien.HoTen</text>),
+        grid.Column("Chức năng", format: @<text>
+    <a href="@Url.Action("Edit", new { id = item.MaSuKien })" class="edit-btn">
+        <abbr title="Cập nhật dữ liệu">
+            <img src="/image/edit.png" width="20" height="20" />
+        </abbr>
+    </a>
+    <a href="@Url.Action("Details", new { id = item.MaSuKien })" class="edit-btn">
+        <abbr title="Xem chi tiết">
+            <img src="/image/details.png" width="20" height="20" />
+        </abbr>
+    </a>
+    <a href="@Url.Action("Delete", new { id = item.MaSuKien })" class="edit-btn">
+        <abbr title="Xóa dữ liệu">
+            <img src="/image/delete.png" width="20" height="20" />
+        </abbr>
+    </a>
+</text>)
+)
+)
+</div>
+}
+else if (!string.IsNullOrEmpty(ViewBag.TB))
+{
+    <p>@ViewBag.TB</p>
+}

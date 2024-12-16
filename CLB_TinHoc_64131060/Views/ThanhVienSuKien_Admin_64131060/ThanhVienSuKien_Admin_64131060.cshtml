@@ -1,0 +1,88 @@
+﻿@model IEnumerable<CLB_TinHoc_64131060.Models.ThanhVienSuKien>
+
+@{
+    ViewBag.Title = "Danh sách thành viên tham gia sự kiện (Chủ nhiệm)";
+    Layout = "~/Views/Shared/_LayoutAdmin_64131060.cshtml";
+    var grid = new WebGrid(Model, canPage: true, canSort: false, defaultSort: "", rowsPerPage: 5);
+    @Scripts.Render("~/Scripts/jquery-1.6.2.min.js")
+}
+
+<style>
+    body {
+        font-size: 15px;
+    }
+
+    .alert-event {
+        font-family: "Oswald", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        margin-top: 150px;
+        margin-left: 20px;
+    }
+
+    .table-header th {
+        background-color: rgba(41,108,178,255);
+    }
+
+    tfoot {
+        font-size: 15px;
+    }
+
+        tfoot a {
+            color: black;
+        }
+
+            tfoot a:hover {
+                cursor: pointer;
+                color: red;
+            }
+
+        tfoot tr {
+            text-align: center;
+        }
+
+    .btn-create, .btn-back {
+        margin-left: 20px;
+        background-color: rgba(41,108,178,255);
+        width: fit-content;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+        .btn-create:hover, .btn-back:hover {
+            color: lawngreen !important;
+        }
+</style>
+
+<h3 class="alert-event">DANH SÁCH THÀNH VIÊN THAM GIA Ở CÁC SỰ KIỆN</h3>
+<div class="d-flex">
+    <div class="btn-back">
+        @Html.ActionLink("QUAY VỀ", "TimKiemSuKien_Admin_64131060", "SuKien_Admin_64131060")
+    </div>
+    <div class="btn-create">
+        @Html.ActionLink("THÊM THÀNH VIÊN THAM GIA", "Create")
+    </div>
+</div>
+
+@grid.GetHtml(
+    tableStyle: "table table-bordered table-hover",
+    headerStyle: "table-header",
+    alternatingRowStyle: "table-row-alternate",
+    columns: grid.Columns(
+        grid.Column("SuKien.TenSuKien", header: "Tên sự kiện"),
+        grid.Column("ThanhVien.HoTen", header: "Tên thành viên"),
+        grid.Column("NgayDangKy", header: "Ngày đăng ký"),
+        grid.Column("Chức năng", format: @<text>
+            <a href="@Url.Action("Details", new { MaSuKien = item.MaSuKien, MaThanhVien = item.MaThanhVien })" class="edit-btn">
+                <abbr title="Xem chi tiết">
+                    <img src="/image/details.png" width="20" height="20" />
+                </abbr>
+            </a>
+            <a href="@Url.Action("Delete", new { MaSuKien = item.MaSuKien, MaThanhVien = item.MaThanhVien })" class="edit-btn">
+                <abbr title="Xóa dữ liệu">
+                    <img src="/image/delete.png" width="20" height="20" />
+                </abbr>
+            </a>
+        </text>)
+)
+)
