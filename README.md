@@ -8,4 +8,6 @@ Xây dựng một trang Web có các chức năng sau:
 - Chức năng báo cáo bằng cách gửi mail
 - Phân quyền cho 3 nhóm đối tượng: Chủ nhiệm, Thành viên và Trợ giảng 
 - Giao diện dễ nhìn, thân thiện và dễ sử dụng
-![image](https://github.com/user-attachments/assets/e5f88ab6-9ced-43a9-a1af-87982774806e)
+
+![image](https://github.com/user-attachments/assets/ed55ee53-fb21-433b-8f00-f33f1dd1b4a7)
+
