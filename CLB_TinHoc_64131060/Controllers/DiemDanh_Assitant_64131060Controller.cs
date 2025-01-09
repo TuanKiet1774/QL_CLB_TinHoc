@@ -55,7 +55,7 @@ namespace CLB_TinHoc_64131060.Controllers
             {
                 db.DiemDanhs.Add(diemDanh);
                 db.SaveChanges();
-                return RedirectToAction("DiemDanh_Assitant_64131060");
+                return RedirectToAction("Create");
             }
 
             ViewBag.MaNhom = new SelectList(db.NhomHocTaps, "MaNhom", "TenNhom", diemDanh.MaNhom);

@@ -57,7 +57,7 @@
         <div class="btn-ls form-group">
             @Html.ActionLink("LỊCH SỬ ĐIỂM DANH", "DiemDanh_Assitant_64131060")
         </div>
-        
+
         <div class="form-group">
             @Html.LabelFor(model => model.MaNhom, "Nhóm học tập", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -85,7 +85,13 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TrangThai, "Trạng thái", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TrangThai, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.TrangThai,
+                    new SelectList(new[]
+                    {
+                        new { Value = "Có mặt", Text = "Có mặt" },
+                        new { Value = "Vắng mặt", Text = "Vắng mặt" }
+                    }, "Value", "Text"),
+                    new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.TrangThai, "", new { @class = "text-danger" })
             </div>
         </div>

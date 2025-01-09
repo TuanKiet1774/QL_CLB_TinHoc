@@ -36,7 +36,6 @@ namespace CLB_TinHoc_64131060.Controllers
             return View(diemDanh);
         }
 
-        // GET: DiemDanh_Member_64131060/Create
         public ActionResult Create()
         {
             ViewBag.MaNhom = new SelectList(db.NhomHocTaps, "MaNhom", "TenNhom");

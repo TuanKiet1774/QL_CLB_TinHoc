@@ -3,7 +3,8 @@
 @{
     ViewBag.Title = "Lịch sử điểm danh (Chủ nhiệm)";
     Layout = "~/Views/Shared/_LayoutAdmin_64131060.cshtml";
-    var grid = new WebGrid(source: Model, canPage: true, canSort: false, rowsPerPage: 6);
+    var sortedModel = Model.OrderByDescending(item => item.NgayDiemDanh);
+    var grid = new WebGrid(source: sortedModel, canPage: true, canSort: false, rowsPerPage: 6);
     @Scripts.Render("~/Scripts/jquery-1.6.2.min.js");
 }
 
@@ -55,7 +56,7 @@
 
 <div class="d-flex">
     <div class="btn-create">
-        @Html.ActionLink("THÊM", "Create")
+        @Html.ActionLink("ĐIỂM DANH", "Create")
     </div>
 </div>
 
@@ -73,11 +74,6 @@ grid.Column(header: "Chức năng", format: @<text>
     <a href="@Url.Action("Edit", new { id = item.MaDiemDanh })" class="edit-btn">
         <abbr title="Cập nhật dữ liệu">
             <img src="/image/edit.png" width="20" height="20" />
-        </abbr>
-    </a>
-    <a href="@Url.Action("Details", new { id = item.MaDiemDanh })" class="edit-btn">
-        <abbr title="Xem chi tiết">
-            <img src="/image/details.png" width="20" height="20" />
         </abbr>
     </a>
     <a href="@Url.Action("Delete", new { id = item.MaDiemDanh })" class="edit-btn">
