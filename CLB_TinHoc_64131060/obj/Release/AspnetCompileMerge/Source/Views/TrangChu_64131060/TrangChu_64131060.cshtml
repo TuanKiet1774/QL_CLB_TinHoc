@@ -1,0 +1,145 @@
+﻿
+@{
+    ViewBag.Title = "Trang chủ của câu lạc bộ";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    .carousel-item img {
+        height: 600px; /* Thay đổi kích thước ảnh */
+        object-fit: cover; /* Đảm bảo ảnh không bị méo */
+    }
+
+    .img-item {
+        border-radius: 15px;
+    }
+    .join-link {
+        color: black;
+        font-weight: 700;
+        text-decoration: none; /* Xóa gạch chân */
+        font-size: 25px;
+    }
+
+        /* Hiệu ứng hover */
+        .join-link:hover {
+            color: red; /* Chuyển sang màu đỏ */
+            font-size: 30px;
+            transform: scale(1.1); /* Tăng kích thước */
+        }
+</style>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="~/Image/Banner.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="/Image/Anh_1.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="/Image/Anh_2.jpg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="/Image/Anh_3.jpg" class="d-block w-100" alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<center style="margin-block: 70px;">
+    <h3 style="font-weight: 700; font-size: 50px; color: rgba(1,67,160,255);">CÂU LẠC BỘ TIN HỌC </h3>
+    <h3 style="font-weight: 700; font-size: 50px; color: red;">KHOA CÔNG NGHỆ THÔNG TIN</h3>
+    <div style="width: 40%; border: 2px solid black;"></div>
+</center>
+
+<div style="padding-inline: 80px;">
+    <div class="d-flex my-5">
+        <img src="~/Image/Anh_4.jpg" width="650" alt="..." class="img-item">
+        <div class="ms-5 text-justify">
+            <h3 style="font-weight: 700; font-size: 40px;">Chia sẻ kiến thức</h3>
+            <div style="font-size: 20px;">
+                Câu lạc bộ tin học là nơi các bạn sẽ được giao lưu học tập, chia sẻ những kiến thức mà mình có và học hỏi những kiến thức mới từ các anh chị, bạn bè trong khoa.
+                Đây là nơi bạn có thể vừa học vừa chơi thông qua các hoạt động củng cố kiến thức vừa đảm bảo tính giải trí, vừa đảm bảo tính dễ hiểu, dễ tiếp thu.
+                Bên cạnh đó, bạn có thể kết bạn, làm quen với các bạn khác lớp, khác chuyên ngành có thể lắng nghe góp ý hay những kinh nghiệm của các anh chị trong khoa về ngành CNTT...
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="padding-inline: 80px; margin-top: 100px;">
+    <div class="d-flex my-5">
+        <div class="me-5 text-justify">
+            <h3 style="font-weight: 700; font-size: 40px;">Kết nối đam mê</h3>
+            <div style="font-size: 20px;">
+                Câu lạc bộ tin học là nơi các bạn sẽ tìm được những người bạn chung trí hướng, chung mục tiêu và lý tưởng từ đó cùng nhau hỗ trợ nhau trong học tập cũng như vui chơi.
+                Tại đây, bạn sẽ được là chính mình, bạn sẽ được thoải mái nói ra những thắc mắc, trình bày những suy nghĩ của bản thân, cùng mọi người giải quyết các vấn đề để cùng nhau tiến bộ.
+
+            </div>
+        </div>
+        <img src="~/Image/Anh_5.jpg" width="650" alt="..." class="img-item">
+    </div>
+</div>
+
+<div style="width: 100%; height: 70px; background-color: rgba(1,67,160,255);"></div>
+
+<center style="margin-block: 70px;">
+    <h3 style="font-weight: 700; font-size: 50px; color: red;">MỤC TIÊU</h3>
+    <div style="width: 10%; border: 2px solid black;"></div>
+
+    <div style="padding-inline: 80px; margin-top: 100px;">
+        <div class="my-3 d-flex justify-content-between">
+            <img src="~/Image/Anh_6.jpg" width="430" alt="..." class="img-item">
+            <img src="~/Image/Anh_7.jpg" width="430" alt="..." class="img-item">
+            <img src="~/Image/Anh_8.jpg" width="430" alt="..." class="img-item">
+        </div>
+    </div>
+</center>
+
+<div style="padding-inline: 80px; margin-block: 60px;">
+    <div class="d-flex">
+        <div class="w-50 me-3">
+            <center><h3 style="font-weight: 700; font-size: 40px;">Mục tiêu ngắn hạn</h3></center>
+            <div style="font-size: 20px;">
+                Hỗ trợ các bạn trong các học phần cơ sở, từ đó giúp các bạn nắm vững kiến thức nền tảng. Ngoài ra, chúng mình cũng sẽ tổ chức các lớp ôn tập giữa kỳ và cuối kỳ cho những môn học cơ sở.
+            </div>
+        </div>
+        <div class="w-50 ms-3">
+            <center><h3 style="font-weight: 700; font-size: 40px;">Mục tiêu dài hạn</h3></center>
+            <div style="font-size: 20px;">
+                xây dựng một cộng đồng chất lượng, nơi các bạn có thể thoải mái trao đổi kiến thức, chia sẻ kinh nghiệm, và cùng nhau phát triển. Hàng năm, CLB sẽ tổ chức các sự kiện và cuộc thi học thuật để tạo cơ hội cho các bạn thử sức và phát huy năng lực của mình.
+            </div>
+        </div>
+    </div>
+</div>
+
+<div style="width: 100%; height: 70px; background-color: rgba(1,67,160,255);"></div>
+
+<center style="margin-block: 70px;">
+    <h3 style="font-weight: 700; font-size: 50px; color: red;">CỘNG ĐỒNG</h3>
+    <div style="width: 10%; border: 2px solid black;"></div>
+
+    <div style="padding-inline: 80px; margin-top: 50px;">
+        <div class="my-3">
+            <img src="~/Image/Anh_9.png" style="width: 100%" alt="..." class="img-item">
+        </div>
+    </div>
+
+    <a href="https://www.facebook.com/groups/clb.tinhoc.ntu" class="join-link">
+        >>
+        Tham gia cùng chúng mình tại đây nhé
+        <<
+    </a>
+</center>

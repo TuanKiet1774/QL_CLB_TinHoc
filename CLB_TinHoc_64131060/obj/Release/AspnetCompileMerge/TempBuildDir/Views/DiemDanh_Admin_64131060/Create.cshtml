@@ -1,0 +1,112 @@
+﻿@model CLB_TinHoc_64131060.Models.DiemDanh
+
+@{
+    ViewBag.Title = "Điểm danh (Chủ nhiệm)";
+    Layout = "~/Views/Shared/_LayoutAdmin_64131060.cshtml";
+}
+
+<style>
+    .body {
+        font-weight: bold;
+        margin-top: 150px;
+        margin-bottom: 50px;
+        margin-left: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .form-horizontal {
+        background-color: whitesmoke;
+        width: 600px;
+    }
+
+    .form-group {
+        margin-left: 50px;
+        display: flex;
+        justify-content: space-between;
+        margin-block: 10px;
+    }
+
+    .control-label {
+        width: 200px;
+    }
+
+    .btn-ls {
+        padding: 5px;
+        margin-block: 10px;
+    }
+
+    .btn-ls, .btn-dd {
+        background-color: rgba(41,108,178,255);
+        width: fit-content;
+    }
+
+    .btn:hover {
+        color: lawngreen !important;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="body">
+        <div class="form-horizontal">
+            <center><h4 class="p-2">ĐIỂM DANH</h4></center>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="btn-ls form-group">
+                @Html.ActionLink("LỊCH SỬ ĐIỂM DANH", "DiemDanh_Admin_64131060")
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MaNhom, "Nhóm học tập", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("MaNhom", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaNhom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MaThanhVien, "Thành viên", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("MaThanhVien", null,"---Thành viên---", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.MaThanhVien, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NgayDiemDanh, "Thời gian", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NgayDiemDanh, new { htmlAttributes = new { @class = "form-control", @Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") } })
+                    @Html.ValidationMessageFor(model => model.NgayDiemDanh, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TrangThai, "Trạng thái", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TrangThai, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TrangThai, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.GhiChu, "Ghi chú", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.GhiChu, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.GhiChu, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group mt-4">
+                <div class="btn-dd col-md-offset-2 col-md-10">
+                    <input type="submit" value="ĐIỂM DANH" class="btn btn-default text-white fw-bold" />
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+}
+
+

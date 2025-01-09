@@ -1,0 +1,82 @@
+﻿@model CLB_TinHoc_64131060.Models.DiemDanh
+
+@{
+    ViewBag.Title = "Chi thiết thông tin điểm danh (Trợ giảng)";
+    Layout = "~/Views/Shared/_LayoutAssitant_64131060.cshtml";
+}
+
+<style>
+    .header {
+        margin-top: 150px;
+        display: flex;
+        justify-content: center;
+    }
+    .body{        
+        display: flex;
+        justify-content: center;
+    }
+    table {
+        width: 500px;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 8px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .btn-item {
+        margin-bottom: 50px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn-back,
+    .btn-edit {
+        background-color: rgba(41,108,178,255);
+        padding: 5px;
+    }
+</style>
+
+<div class="header mb-3">
+    <h3>CHI TIẾT ĐIỂM DANH</h3>
+</div>
+
+<div class="body">
+    <table>
+        <tr>
+            <th>Nhóm</th>
+            <td>@Html.DisplayFor(model => model.NhomHocTap.TenNhom)</td>
+        </tr>
+        <tr>
+            <th>Thời gian</th>
+            <td>@Html.DisplayFor(model => model.NgayDiemDanh)</td>
+        </tr>
+        <tr>
+            <th>Thành viên</th>
+            <td>@Html.DisplayFor(model => model.ThanhVien.HoTen)</td>
+        </tr>
+        <tr>
+            <th>Trạng thái</th>
+            <td>@Html.DisplayFor(model => model.TrangThai)</td>
+        </tr>
+        <tr>
+            <th>Ghi chú</th>
+            <td>@Html.DisplayFor(model => model.GhiChu)</td>
+        </tr>
+    </table>
+</div>
+
+<center class="btn-item mt-3">
+    <div class="btn-edit me-5">
+        @Html.ActionLink("CẬP NHẬT", "Edit", new { id = Model.MaDiemDanh })
+    </div>
+    <div class="btn-back ms-5">
+        @Html.ActionLink("QUAY VỀ", "DiemDanh_Assitant_64131060")
+    </div>
+</center>

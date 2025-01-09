@@ -1,0 +1,106 @@
+﻿@model IEnumerable<CLB_TinHoc_64131060.Models.NhomHocTap>
+
+@{
+    ViewBag.Title = "Nhóm học tập (Chủ nhiệm)";
+    Layout = "~/Views/Shared/_LayoutAdmin_64131060.cshtml";
+}
+
+<style>
+    .alert-event {
+        font-family: "Oswald", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        margin-top: 150px;
+        margin-left: 20px;
+    }
+
+    .btn-create, .btn-back, .btn-dd {
+        margin-left: 20px;
+        background-color: rgba(41,108,178,255);
+        width: fit-content;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+
+        .btn-create:hover, .btn-back:hover, .btn-dd:hover {
+            color: lawngreen !important;
+        }
+
+    .table {
+        margin-bottom: 50px;
+    }
+
+        .table th {
+            background-color: rgba(41,108,178,255);
+        }
+</style>
+
+<h3 class="alert-event">CÁC NHÓM HỌC TẬP CỦA CÂU LẠC BỘ</h3>
+
+<div class="d-flex">
+    <div class="btn-back">
+        @Html.ActionLink("QUAY VỀ", "TimKiemTV_Admin_64131060", "ThanhVien_Admin_64131060")
+    </div>
+    <div class="btn-create">
+        @Html.ActionLink("THÊM NHÓM", "Create")
+    </div>
+</div>
+<table class="table table-bordered table-hover">
+    <tr>
+        <th>Mã nhóm</th>
+        <th>
+            Nhóm học tập
+        </th>
+        <th>
+            Thành lập
+        </th>
+        <th>
+            Mô tả
+        </th>
+        <th>
+            quản viên
+        </th>
+        <th>
+            Chức năng
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaNhom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenNhom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayTao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MoTa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThanhVien.HoTen)
+            </td>
+            <td>
+                <a href="@Url.Action("Edit", new { id = item.MaNhom })" class="edit-btn">
+                    <abbr title="Cập nhật dữ liệu">
+                        <img src="/image/edit.png" width="20" height="20" />
+                    </abbr>
+                </a>
+                <a href="@Url.Action("Details", new { id = item.MaNhom })" class="edit-btn">
+                    <abbr title="Xem chi tiết">
+                        <img src="/image/details.png" width="20" height="20" />
+                    </abbr>
+                </a>
+                <a href="@Url.Action("Delete", new { id = item.MaNhom })" class="edit-btn">
+                    <abbr title="Xóa dữ liệu">
+                        <img src="/image/delete.png" width="20" height="20" />
+                    </abbr>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>

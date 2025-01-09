@@ -1,0 +1,76 @@
+﻿@model CLB_TinHoc_64131060.Models.ThanhVien
+
+@{
+    ViewBag.Title = "Chi tiết thông tin thành viên (Chủ nhiệm)";
+    Layout = "~/Views/Shared/_LayoutAdmin_64131060.cshtml";
+}
+
+<style>
+    .table-body {
+        margin-top: 150px;
+        margin-bottom: 50px;
+    }
+
+    .header th {
+        background-color: rgba(41,108,178,255) !important;
+        color: white;
+    }
+
+    .btn-back, .btn-edit {
+        background-color: rgba(41,108,178,255);
+        border: 1px solid black;
+        margin-left: 10px;
+    }
+
+    .btn:hover {
+        font-weight: bold;
+        color: lawngreen !important;
+    }
+</style>
+
+<div class="table-body">
+    <table class="table table-bordered">
+        <thead class="header">
+            <tr>
+                <th>Thông tin</th>
+                <th>Chi tiết</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Mã số</th>
+                <td>@Html.DisplayFor(model => model.MaThanhVien)</td>
+            </tr>
+            <tr>
+                <th>Thành viên</th>
+                <td>@Html.DisplayFor(model => model.HoTen)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Email)</th>
+                <td>@Html.DisplayFor(model => model.Email)</td>
+            </tr>
+            <tr>
+                <th>Mật khẩu</th>
+                <td>@Html.DisplayFor(model => model.MatKhau)</td>
+            </tr>
+            <tr>
+                <th>Thời gian tạo</th>
+                <td>@Html.DisplayFor(model => model.NgayTao)</td>
+            </tr>
+            <tr>
+                <th>Vai trò</th>
+                <td>@Html.DisplayFor(model => model.VaiTro.TenVaiTro)</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex">
+        <div class="btn-edit">
+            @Html.ActionLink("CẬP NHẬT", "Edit", new { id = Model.MaThanhVien }, new { @class = "btn text-white" })
+        </div>
+        <div class="btn-back">
+            @Html.ActionLink("QUAY VỀ", "TimKiemTV_Admin_64131060", null, new { @class = "btn text-white" })
+        </div>
+    </div>
+</div>
+
+

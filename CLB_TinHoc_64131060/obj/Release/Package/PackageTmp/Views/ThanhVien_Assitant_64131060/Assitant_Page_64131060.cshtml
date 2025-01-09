@@ -1,0 +1,100 @@
+﻿@model CLB_TinHoc_64131060.Models.ThanhVien
+@{
+    ViewBag.Title = "Trang cá nhân trợ giảng";
+    Layout = "~/Views/Shared/_LayoutAssitant_64131060.cshtml";
+}
+
+<style>
+    .body-page {
+        display: flex;
+        justify-content: center;
+    }
+
+    .table-info {
+        width: 700px;
+        margin-top: 20px;
+    }
+
+        .table-info th, .table-info td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: left;
+            font-size: 20px;
+        }
+
+        .table-info th {
+            background-color: rgba(41,108,178,255);
+            color: white;
+        }
+        
+        .table-info td {
+            background-color: whitesmoke;
+            color: black;
+        }
+
+    .btn-back, .btn-edit {
+        margin-top: 20px;
+        display: inline-block;
+    }
+
+        .btn-back a, .btn-edit a {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: rgba(41,108,178,255);
+            color: white;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+            .btn-back a:hover, .btn-edit a:hover {
+                background-color: #0056b3;
+                color: lawngreen;
+            }
+    .avatar {
+        margin-top: 130px;
+        display: flex;
+        justify-content: center;
+    }
+</style>
+
+<div class="avatar">
+    <img src="~/Image/Assistant.jpg"  style="width: 200px; height: 200px;" />
+</div>
+<div class="body-page">
+    
+    <table class="table-info">
+        <tr>
+            <th>Mã thành viên</th>
+            <td>@Model.MaThanhVien</td>
+        </tr>
+        <tr>
+            <th>Tên thành viên</th>
+            <td>@Model.HoTen</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>@Model.Email</td>
+        </tr>
+        <tr>
+            <th>Mật khẩu</th>
+            <td>@Model.MatKhau</td>
+        </tr>
+        <tr>
+            <th>Vai trò</th>
+            <td>@Model.VaiTro.TenVaiTro</td>
+        </tr>
+        <tr>
+            <th>Thời gian</th>
+            <td>@(Model.NgayTao.HasValue ? Model.NgayTao.Value.ToString("dd/MM/yyyy") : "N/A")</td>
+        </tr>
+    </table>
+</div>
+
+<div style="text-align: center; margin-block: 20px;">
+    <div class="btn-back">
+        @Html.ActionLink("ĐĂNG XUẤT", "Login_64131060", "Login_64131060")
+    </div>
+    <div class="btn-edit">
+        <a href="@Url.Action("Edit_Assistant_64131060", "ThanhVien_Assitant_64131060", new { id = Model.MaThanhVien })">CẬP NHẬT</a>
+    </div>
+</div>

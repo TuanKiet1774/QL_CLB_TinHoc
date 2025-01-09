@@ -60,7 +60,7 @@ namespace CLB_TinHoc_64131060.Controllers
             {
                 db.ThanhVienSuKiens.Add(thanhVienSuKien);
                 db.SaveChanges();
-                return RedirectToAction("ThanhVienSuKien_Admin_64131060");
+                return RedirectToAction("Create");
             }
 
             ViewBag.MaSuKien = new SelectList(db.SuKiens, "MaSuKien", "TenSuKien", thanhVienSuKien.MaSuKien);

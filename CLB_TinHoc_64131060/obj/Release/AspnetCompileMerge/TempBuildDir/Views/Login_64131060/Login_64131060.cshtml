@@ -1,0 +1,137 @@
+﻿
+@{
+    ViewBag.Title = "Đăng nhập";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    .welcome {
+        margin-top: 150px;
+        font-family: "Oswald", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        font-size: 50px;
+        width: 100%;
+        margin-bottom: 30px;
+    }
+
+    .login-form {
+        font-family: "Oswald", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        font-size: 30px;
+        width: fit-content;
+        margin-inline: 300px;
+        margin-bottom: 50px;
+        border: 1px solid black;
+        padding: 10px;
+        border-radius: 15px;
+    }
+
+    form {
+        margin-top: 150px;
+        margin-left: 20px;
+        margin-right: 50px;
+    }
+
+    .logo {
+        border-radius: 15px;
+        width: 500px;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    input {
+        width: 400px;
+        padding: 10px;
+    }
+
+    .info {
+        margin-top: 70px;
+        margin-left: 110px;
+    }
+
+    .line{
+        width: 300px;
+        border: 1px solid black;
+    }
+
+    .tiktok{
+        width: 25px;
+    }
+
+    .btn-signin, .btn-submit {
+        border: 1px solid black;
+        width: fit-content;
+        background-color: rgba(41,108,178,255);
+        font-weight: normal;
+        color: white;
+    }
+
+    .btn-submit:hover{
+        font-weight: bold;
+        color: lawngreen;
+    }
+</style>
+
+<center class="welcome">CHÀO MỪNG BẠN ĐẾN VỚI CÂU LẠC BỘ TIN HỌC NTU</center>
+<div class="login-form">
+    <div class="d-flex">
+        <img src="~/Image/Logo.jpg" class="logo" alt="..." title="Câu lạc bộ tin học NTU">
+        <form action="/Login_64131060/Login_64131060" method="post">
+            <ul>
+                <li>
+                    <i class="fa-solid fa-user-secret"></i>
+                    <b>Email/User</b>
+                </li>
+                <li>
+                    <input type="email" name="email" required />
+                </li>
+                <li>
+                    <i class="fa-brands fa-keycdn"></i>
+                    <b>Mật khẩu</b>
+                </li>
+                <li>
+                    <input type="password" name="matKhau" required />
+                    @if (ViewBag.Error != null)
+                    {
+                        <p style="color: red;">@ViewBag.Error</p>
+                    }
+                    else
+                    {
+                        <p></p>
+                    }
+                </li>
+                <li class="d-flex justify-content-between">
+                    <button class="btn-submit" type="submit">Đăng nhập</button>
+                    <div class="btn-signin me-3">
+                        @Html.ActionLink("Đăng ký", "Create","ThanhVien_Member_64131060")
+                    </div>
+                </li>
+            </ul>
+
+            <ul class="info d-flex">
+                <li>
+                    <a href="@Html.Raw("https://www.tiktok.com/@tuankiet1774")" target="_blank">
+                        <img src="~/Image/TikTok.jpg" class="tiktok" alt="TikTok" title="TikTok">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.facebook.com/ptk1774"><img src="~/Image/Facebook.png" class="tiktok" alt="..." title=""></a>
+                </li>
+                <li>
+                    <a href="@Html.Raw("https://www.tiktok.com/@tuankiet1774")" target="_blank">
+                        <img src="~/Image/Youtube.png" class="tiktok" alt="..." title="">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://github.com/TuanKiet1774"><img src="~/Image/Github.png" class="tiktok" alt="..." title=""></a>
+                </li>
+            </ul>
+        </form>
+    </div>
+</div>
+
+

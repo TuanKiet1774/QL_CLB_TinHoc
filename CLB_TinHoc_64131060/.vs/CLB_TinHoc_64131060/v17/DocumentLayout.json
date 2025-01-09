@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "D:\\PTUDW\\CLB_TinHoc_64131060\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{775133DF-31F4-4C5C-A730-514737FD19A7}|CLB_TinHoc_64131060.csproj|d:\\ptudw\\clb_tinhoc_64131060\\views\\trangchu_64131060\\trangchu_64131060.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{775133DF-31F4-4C5C-A730-514737FD19A7}|CLB_TinHoc_64131060.csproj|solutionrelative:views\\trangchu_64131060\\trangchu_64131060.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{775133DF-31F4-4C5C-A730-514737FD19A7}|CLB_TinHoc_64131060.csproj|d:\\ptudw\\clb_tinhoc_64131060\\views\\sukien_assitant_64131060\\timkiemsukien_assitant_64131060.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{775133DF-31F4-4C5C-A730-514737FD19A7}|CLB_TinHoc_64131060.csproj|solutionrelative:views\\sukien_assitant_64131060\\timkiemsukien_assitant_64131060.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{775133DF-31F4-4C5C-A730-514737FD19A7}|CLB_TinHoc_64131060.csproj|d:\\ptudw\\clb_tinhoc_64131060\\controllers\\thanhvien_admin_64131060controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{775133DF-31F4-4C5C-A730-514737FD19A7}|CLB_TinHoc_64131060.csproj|solutionrelative:controllers\\thanhvien_admin_64131060controller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -22,15 +26,28 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ThanhVien_Admin_64131060Controller.cs",
+              "DocumentMoniker": "D:\\PTUDW\\CLB_TinHoc_64131060\\Controllers\\ThanhVien_Admin_64131060Controller.cs",
+              "RelativeDocumentMoniker": "Controllers\\ThanhVien_Admin_64131060Controller.cs",
+              "ToolTip": "D:\\PTUDW\\CLB_TinHoc_64131060\\Controllers\\ThanhVien_Admin_64131060Controller.cs",
+              "RelativeToolTip": "Controllers\\ThanhVien_Admin_64131060Controller.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABEAAAAoAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-09T03:30:36.662Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "TrangChu_64131060.cshtml",
-              "DocumentMoniker": "D:\\PTUDW\\CLB_TinHoc_64131060\\Views\\TrangChu_64131060\\TrangChu_64131060.cshtml",
-              "RelativeDocumentMoniker": "Views\\TrangChu_64131060\\TrangChu_64131060.cshtml",
-              "ToolTip": "D:\\PTUDW\\CLB_TinHoc_64131060\\Views\\TrangChu_64131060\\TrangChu_64131060.cshtml",
-              "RelativeToolTip": "Views\\TrangChu_64131060\\TrangChu_64131060.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMAAAAYAAAA",
+              "Title": "TimKiemSuKien_Assitant_64131060.cshtml",
+              "DocumentMoniker": "D:\\PTUDW\\CLB_TinHoc_64131060\\Views\\SuKien_Assitant_64131060\\TimKiemSuKien_Assitant_64131060.cshtml",
+              "RelativeDocumentMoniker": "Views\\SuKien_Assitant_64131060\\TimKiemSuKien_Assitant_64131060.cshtml",
+              "ToolTip": "D:\\PTUDW\\CLB_TinHoc_64131060\\Views\\SuKien_Assitant_64131060\\TimKiemSuKien_Assitant_64131060.cshtml",
+              "RelativeToolTip": "Views\\SuKien_Assitant_64131060\\TimKiemSuKien_Assitant_64131060.cshtml",
+              "ViewState": "AQIAADYAAAAAAAAAAAAAAFgAAAAKAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-16T16:14:40.424Z",
+              "WhenOpened": "2025-01-09T03:27:57.75Z",
               "EditorCaption": ""
             }
           ]

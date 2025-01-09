@@ -6,102 +6,214 @@
 }
 
 <style>
-    .post {
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f2f5;
+    }
+
+    .welcome {
+        font-family: "Oswald", sans-serif;
+        font-weight: bold;
+        font-size: 32px;
+        color: darkblue;
+        text-align: center;
+        margin: 150px 0px 20px 0px;
+    }
+
+    .post-container {
         margin-top: 150px;
         margin-bottom: 100px;
-        margin-inline: 450px;
-        font-size: 20px;
+        max-width: 800px;
+        margin-inline: auto;
     }
 
     .post-item {
-        border: 1px solid black;
-        margin-top: 20px;
-        background-color: whitesmoke;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        margin-bottom: 20px;
+        overflow: hidden;
+        transition: box-shadow 0.3s;
     }
 
-    .author {
-        width: 100%;
-        font-size: 10px;
-        display: flex;
-        justify-content: space-between;
-        text-align: center;
-        padding: 10px;
-        border-top: 1px solid black;
-    }
+        .post-item:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
     .post-header {
-        background-color: rgba(41,108,178,255);
-        font-family: "Oswald", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: bold;
-        font-style: normal;
-        padding: 10px;
+        display: flex;
+        align-items: center;
+        padding: 12px 20px;
+        border-bottom: 1px solid #ddd;
     }
+
+        .post-header img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .post-header .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .post-header .author-info .author-name {
+                font-weight: bold;
+                font-size: 16px;
+            }
+
+            .post-header .author-info .post-date {
+                font-size: 14px;
+                color: #666;
+            }
 
     .post-content {
-        margin-inline: 20px;
-        margin-block: 10px;
+        padding: 20px 20px 0px 20px;
+        font-size: 16px;
+        color: #333;
+        line-height: 1.5;
     }
 
-    .img, img {
-        text-align: center;
-        border-radius: 15px;
-        margin-bottom: 10px;
-    }
-
-    .option {
-        background-color: rgba(41,108,178,255);
-        padding-block: 10px;
-    }
-
-    .btn-create {
-        text-align: center;
-        background-color: rgba(41,108,178,255);
-        padding-block: 5px;
-        border: 1px solid black;
-        border-radius: 15px;
-    }
-
-        .btn-create:hover {
-            background: rgba(41,108,178,200);
-            cursor: pointer;
-            border: 2px solid whitesmoke;
+        .post-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 15px;
         }
+
+        .post-content strong {
+            font-size: 18px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+    .post-actions {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 20px;
+        border-top: 1px solid #ddd;
+    }
+
+        .post-actions button {
+            background: none;
+            border: none;
+            color: #555;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px 12px;
+        }
+
+            .post-actions button:hover {
+                color: #296cb2;
+            }
+
+            .post-actions button i {
+                margin-right: 5px;
+            }
+
+    .create-post-box {
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        padding: 15px;
+        margin-bottom: 25px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+        .create-post-box:hover {
+            background-color: #f0f2f5;
+        }
+
+    .create-post-input {
+        display: flex;
+        align-items: center;
+        padding: 12px 16px;
+        border-radius: 20px;
+        background-color: #f0f2f5;
+    }
+
+    .create-post-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 15px;
+    }
+
+    .create-post-placeholder {
+        color: #65676b;
+        font-size: 16px;
+    }
+
+    .option-item {
+        padding: 5px 15px;
+        font-size: 15px;
+        margin: 0px;
+    }
+
+        .option-item b a {
+            color: rgba(242,174,13,255);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 18px;
+        }
+
+            .option-item b a:hover {
+                color: #296cb2;
+            }
+
+    .btn-create a {
+        font-size: 22px !important;
+        font-weight: normal;
+        color: black !important;
+    }
 </style>
 
-
-<div class="post">
-    <div class="btn-create">
-        <b style="font-size: 30px;">@Html.ActionLink("+", "Create")</b>
+<div class="post-container">
+    <div class="create-post-box">
+        <div class="create-post-input">
+            <div class="btn-create">
+                <b>@Html.ActionLink("Bài viết mới !!!", "Create")</b><i class="fa-solid fa-clover" style="color: #0a9913;"></i>
+            </div>
+        </div>
     </div>
-    @foreach (var item in Model)
+
+    @foreach (var item in Model.Reverse())
     {
         <div class="post-item">
+            <!-- Header -->
             <div class="post-header">
-                <h3>@Html.DisplayFor(modelItem => item.TieuDe)</h3>
+                <img src="~/Image/student.png" alt="Author Avatar" />
+                <div class="author-info">
+                    <div class="author-name">@Html.DisplayFor(modelItem => item.ThanhVien.HoTen)</div>
+                    <div class="post-date">@Html.DisplayFor(modelItem => item.NgayTao)</div>
+                </div>
             </div>
+
+            <!-- Content -->
             <div class="post-content">
-                @Html.DisplayFor(modelItem => item.NoiDung)
+                <div><strong>@Html.DisplayFor(modelItem => item.TieuDe)</strong></div>
+                <div>@Html.DisplayFor(modelItem => item.NoiDung)</div>
+                @if (!string.IsNullOrEmpty(item.Anh))
+                {
+                    <img src="~/Image/@Html.DisplayFor(modelItem => item.Anh)" alt="Post Image" />
+                }
             </div>
-            <div class="img">
-                <img src="~/Image/@Html.DisplayFor(modelItem => item.Anh)" alt="" width="500" height="500" />
-            </div>
-            <div class="author">
-                <div>@Html.DisplayFor(modelItem => item.ThanhVien.HoTen)</div>
-                <div>@Html.DisplayFor(modelItem => item.NgayTao)</div>
-            </div>
-            <div class="option d-flex justify-content-between">
+            <div class="d-flex justify-content-between my-2">
                 <div class="option-item ms-2">
-                    <b>@Html.ActionLink("SỬA", "Edit", new { id = item.MaBaiDang })</b>
+                    <b>@Html.ActionLink("Sửa", "Edit", new { id = item.MaBaiDang })</b>
                 </div>
                 <div class="option-item">
-                    <b>@Html.ActionLink("CHI TIẾT", "Details", new { id = item.MaBaiDang })</b>
+                    <b>@Html.ActionLink("Chi tiết", "Details", new { id = item.MaBaiDang })</b>
                 </div>
                 <div class="option-item me-2">
-                    <b>@Html.ActionLink("XÓA", "Delete", new { id = item.MaBaiDang })</b>
+                    <b>@Html.ActionLink("Xóa", "Delete", new { id = item.MaBaiDang })</b>
                 </div>
             </div>
         </div>
     }
 </div>
-

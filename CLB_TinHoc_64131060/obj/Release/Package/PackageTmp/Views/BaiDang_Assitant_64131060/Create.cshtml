@@ -1,0 +1,194 @@
+﻿@model CLB_TinHoc_64131060.Models.BaiDang
+
+@{
+    ViewBag.Title = "Thêm bài viết (trợ giảng)";
+    Layout = "~/Views/Shared/_LayoutAssitant_64131060.cshtml";
+}
+<style>
+    .body-create {
+        margin-top: 150px;
+        margin-bottom: 50px;
+        margin-inline: 300px;
+        font-size: 20px;
+    }
+
+    .btn-back,
+    .btn-create {
+        border: 1px solid black;
+        background-color: rgba(41,108,178,255);
+        width: fit-content;
+    }
+
+    .btn-back {
+        padding: 5px;
+        font-size: 17px;
+    }
+
+    .form-control {
+        width: 300px;
+        padding: 10px;
+    }
+
+    .btn:hover {
+        color: lawngreen !important;
+    }
+
+    .content-review {
+        margin-top: 20px;
+        font-size: 18px;
+    }
+
+        .content-review div {
+            margin-bottom: 10px;
+        }
+</style>
+
+
+@using (Html.BeginForm("Create", "BaiDang_Assitant_64131060", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="body-create d-flex">
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <b>Mã bài đăng</b>
+            <div>
+                @Html.EditorFor(model => model.MaBaiDang, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MaBaiDang, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <b>Tiêu đề</b>
+            <div>
+                @Html.EditorFor(model => model.TieuDe, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.TieuDe, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <b>Ảnh</b>
+            <div>
+                <input type="file" style="height:40px;" name="Anh" accept="Image/*" required />
+                @Html.ValidationMessageFor(model => model.Anh, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <b>Nội dung</b>
+            <div>
+                @Html.EditorFor(model => model.NoiDung, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NoiDung, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <b>Tác giả</b>
+            <div>
+                @Html.DropDownList("TacGia", null,"---Thành viên---" ,htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TacGia, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <b>Thời gian</b>
+            <div>
+                @Html.EditorFor(model => model.NgayTao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NgayTao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="btn-back mt-3">
+            @Html.ActionLink("QUAY VỀ", "BaiDang_Assitant_64131060")
+        </div>
+    </div>
+
+    <div class="content-review ms-5">
+        <h3><b>Xem trước nội dung bài viết</b></h3>
+        <div>
+            <b>Mã bài đăng:</b> <span id="preview-maBaiDang"></span>
+        </div>
+        <div>
+            <b>Tiêu đề:</b> <span id="preview-tieuDe"></span>
+        </div>
+        <div>
+            <b>Nội dung:</b> <span id="preview-noiDung"></span>
+        </div>
+        <div>
+            <b>Ảnh:</b> <span id="preview-anh"></span>
+            <img id="preview-img" style="max-width: 300px; margin-top: 10px; display: none;" />
+        </div>
+
+        <div>
+            <b>Tác giả:</b> <span id="preview-tacGia"></span>
+        </div>
+        <div>
+            <b>Thời gian:</b> <span id="preview-thoiGian"></span>
+        </div>
+        <div class="btn-create col-md-offset-2 col-md-10">
+            <input type="submit" value="ĐĂNG BÀI" class="btn text-white" />
+        </div>
+    </div>
+
+</div>
+}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const ngayTaoInput = document.getElementById("NgayTao");
+        const tacGiaInput = document.querySelector("[name='TacGia']");
+
+        if (ngayTaoInput) {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            const hours = String(today.getHours()).padStart(2, '0');
+            const minutes = String(today.getMinutes()).padStart(2, '0');
+            const seconds = String(today.getSeconds()).padStart(2, '0');
+
+            const formattedDate = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+            ngayTaoInput.value = formattedDate;
+        }
+
+        const maBaiDangInput = document.querySelector("[name='MaBaiDang']");
+        const tieuDeInput = document.querySelector("[name='TieuDe']");
+        const noiDungInput = document.querySelector("[name='NoiDung']");
+        const anhInput = document.querySelector("[name='Anh']");
+
+        const previewMaBaiDang = document.getElementById("preview-maBaiDang");
+        const previewTieuDe = document.getElementById("preview-tieuDe");
+        const previewNoiDung = document.getElementById("preview-noiDung");
+        const previewAnh = document.getElementById("preview-anh");
+        const previewImg = document.getElementById("preview-img");
+        const previewThoiGian = document.getElementById("preview-thoiGian");
+        const previewTacGia = document.getElementById("preview-tacGia");
+
+        function updatePreview() {
+            previewMaBaiDang.textContent = maBaiDangInput ? maBaiDangInput.value : "";
+            previewTieuDe.textContent = tieuDeInput ? tieuDeInput.value : "";
+            previewNoiDung.textContent = noiDungInput ? noiDungInput.value : "";
+            previewThoiGian.textContent = ngayTaoInput ? ngayTaoInput.value : "";
+            previewTacGia.textContent = tacGiaInput ? tacGiaInput.value : "";
+
+            // Hiển thị hình ảnh
+            if (anhInput.files && anhInput.files[0]) {
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImg.src = e.target.result; // Gán hình ảnh vào thẻ <img>
+                    previewImg.style.display = "block"; // Hiển thị thẻ <img>
+                };
+                reader.readAsDataURL(anhInput.files[0]);
+            } else {
+                previewImg.style.display = "none"; // Ẩn thẻ <img> nếu không có ảnh
+            }
+        }
+
+        maBaiDangInput?.addEventListener("input", updatePreview);
+        tieuDeInput?.addEventListener("input", updatePreview);
+        noiDungInput?.addEventListener("input", updatePreview);
+        anhInput?.addEventListener("change", updatePreview);
+        tacGiaInput?.addEventListener("input", updatePreview);
+    });
+
+</script>

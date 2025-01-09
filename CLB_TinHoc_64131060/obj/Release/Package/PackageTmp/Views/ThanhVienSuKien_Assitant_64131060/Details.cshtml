@@ -1,0 +1,70 @@
+﻿@model CLB_TinHoc_64131060.Models.ThanhVienSuKien
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAssitant_64131060.cshtml";
+}
+
+<style>
+    body {
+        font-size: 15px;
+    }
+    .alert-event {
+        font-family: "Oswald", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        margin-top: 150px;
+        margin-left: 20px;
+    }
+    .details-table {
+        width: 70%;
+        margin: 20px auto;
+        border-collapse: collapse;
+    }
+
+        .details-table th, .details-table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .details-table th {
+            background-color: rgba(41, 108, 178, 255);
+            color: white;
+        }
+
+    .btn-create, .btn-back {
+        margin-left: 20px;
+        background-color: rgba(41, 108, 178, 255);
+        color: white;
+        padding: 5px 15px;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 20px;
+    }
+
+        .btn-create:hover, .btn-back:hover {
+            color: lawngreen;
+            cursor: pointer;
+        }
+</style>
+<h3 class="alert-event">DANH SÁCH THÀNH VIÊN THAM GIA Ở CÁC SỤ KIỆN</h3>
+<table class="details-table">
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.SuKien.TenSuKien)</th>
+        <td>@Html.DisplayFor(model => model.SuKien.TenSuKien)</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.ThanhVien.HoTen)</th>
+        <td>@Html.DisplayFor(model => model.ThanhVien.HoTen)</td>
+    </tr>
+    <tr>
+        <th>@Html.DisplayNameFor(model => model.NgayDangKy)</th>
+        <td>@Html.DisplayFor(model => model.NgayDangKy)</td>
+    </tr>
+</table>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { MaSuKien = Model.MaSuKien, MaThanhVien = Model.MaThanhVien }, new { @class = "btn-create" })
+    @Html.ActionLink("Back to List", "ThanhVienSuKien_Assitant_64131060", null, new { @class = "btn-back" })
+</p>

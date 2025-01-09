@@ -1,0 +1,106 @@
+﻿@model CLB_TinHoc_64131060.Models.ThanhVien
+
+@{
+    ViewBag.Title = "Cập nhật thông tin cá nhân (Trợ giảng)";
+    Layout = "~/Views/Shared/_LayoutAssitant_64131060.cshtml";
+}
+
+<style>
+    .form-horizontal {
+        margin-top: 150px;
+        margin-inline: 450px;
+        margin-bottom: 50px;
+        max-width: 700px;
+    }
+
+    .form-group {
+        display: flex;
+        margin-bottom: 5px;
+    }
+
+    .form-control {
+        padding: 10px;
+    }
+
+    .control-label {
+        font-weight: bold;
+    }
+
+    .btn-back,
+    .btn-save {
+        border: 1px solid black;
+        background-color: rgba(41,108,178,255);
+        width: fit-content;
+    }
+
+    .btn-back {
+        padding: 5px;
+        font-size: 17px;
+    }
+
+        .btn-back:hover, .btn-save:hover, .btn:hover {
+            color: lawngreen !important;
+            background-color: rgba(41,108,178,255);
+            font-weight: bold;
+        }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.MaThanhVien)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.HoTen, "Thành viên", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.HoTen, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.HoTen, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Email, "Email", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MatKhau, "Mật khẩu", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MatKhau, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.MatKhau, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.MaVaiTro, "Vai trò", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <p class="form-control-static">@Html.DisplayFor(model => model.VaiTro.TenVaiTro)</p>
+                @Html.HiddenFor(model => model.MaVaiTro)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.NgayTao, "Ngày tạo", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NgayTao, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NgayTao, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group mt-4">
+            <div class="btn-save col-md-offset-2 col-md-10 me-5">
+                <input type="submit" value="CẬP NHẬT" class="btn btn-default text-white" />
+            </div>
+            <div class="btn-back ms-5">
+                @Html.ActionLink("QUAY VỀ", "Assitant_Page_64131060")
+            </div>
+        </div>
+    </div>
+}
+

@@ -6,69 +6,136 @@
 }
 
 <style>
-    .post {
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f2f5;
+    }
+
+    .post-container {
         margin-top: 150px;
         margin-bottom: 100px;
-        margin-inline: 450px;
-        font-size: 20px;
+        max-width: 800px;
+        margin-inline: auto;
     }
 
     .post-item {
-        border: 1px solid black;
-        margin-top: 20px;
-        background-color: whitesmoke;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        margin-bottom: 20px;
+        overflow: hidden;
+        transition: box-shadow 0.3s;
     }
 
-    .author {
-        width: 100%;
-        font-size: 10px;
-        display: flex;
-        justify-content: space-between;
-        text-align: center;
-        padding: 10px;
-        border-top: 1px solid black;
-    }
+        .post-item:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
 
     .post-header {
-        background-color: rgba(41,108,178,255);
-        font-family: "Oswald", sans-serif;
-        font-optical-sizing: auto;
-        font-weight: bold;
-        font-style: normal;
-        padding: 10px;
+        display: flex;
+        align-items: center;
+        padding: 12px 20px; /* Tăng padding */
+        border-bottom: 1px solid #ddd;
     }
+
+        .post-header img {
+            width: 50px; /* Tăng từ 40px */
+            height: 50px; /* Tăng từ 40px */
+            border-radius: 50%;
+            margin-right: 15px; /* Tăng từ 10px */
+        }
+
+        .post-header .author-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+            .post-header .author-info .author-name {
+                font-weight: bold;
+                font-size: 16px; /* Tăng từ 14px */
+            }
+
+            .post-header .author-info .post-date {
+                font-size: 14px; /* Tăng từ 12px */
+                color: #666;
+            }
 
     .post-content {
-        margin-inline: 20px;
-        margin-block: 10px;
+        padding: 20px; /* Tăng từ 15px */
+        font-size: 16px; /* Tăng từ 14px */
+        color: #333;
+        line-height: 1.5; /* Thêm line-height để text dễ đọc hơn */
     }
 
-    .img, img {
+        .post-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 15px; /* Tăng từ 10px */
+        }
+
+        .post-content strong {
+            font-size: 18px; /* Tăng size cho tiêu đề */
+            display: block;
+            margin-bottom: 10px;
+        }
+
+    .post-actions {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 20px; /* Tăng padding */
+        border-top: 1px solid #ddd;
+    }
+
+        .post-actions button {
+            background: none;
+            border: none;
+            color: #555;
+            font-size: 15px; /* Tăng từ 14px */
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 8px 12px; /* Thêm padding cho button */
+        }
+
+            .post-actions button:hover {
+                color: #296cb2;
+            }
+
+            .post-actions button i {
+                margin-right: 5px;
+            }
+
+    .title {
         text-align: center;
-        border-radius: 15px;
-        margin-bottom: 10px;
+        color: darkblue;
+        margin-bottom: 30px; /* Tăng từ 20px */
+        font-size: 24px; /* Thêm kích thước font cho title */
+        font-weight: bold;
     }
 </style>
-
-
-<div class="post">
-    @foreach (var item in Model)
+<div class="post-container">
+    @foreach (var item in Model.Reverse())
     {
         <div class="post-item">
+            <!-- Header -->
             <div class="post-header">
-                <h3>@Html.DisplayFor(modelItem => item.TieuDe)</h3>
+                <img src="~/Image/student.png" alt="Author Avatar" />
+                <div class="author-info">
+                    <div class="author-name">@Html.DisplayFor(modelItem => item.ThanhVien.HoTen)</div>
+                    <div class="post-date">@Html.DisplayFor(modelItem => item.NgayTao)</div>
+                </div>
             </div>
+            <!-- Content -->
             <div class="post-content">
-                @Html.DisplayFor(modelItem => item.NoiDung)
+                <div><strong>@Html.DisplayFor(modelItem => item.TieuDe)</strong></div>
+                <div>@Html.DisplayFor(modelItem => item.NoiDung)</div>
+                @if (!string.IsNullOrEmpty(item.Anh))
+                {
+                    <img src="~/Image/@Html.DisplayFor(modelItem => item.Anh)" alt="Post Image" />
+                }
             </div>
-            <div class="img">
-                <img src="~/Image/@Html.DisplayFor(modelItem => item.Anh)" alt="" width="500" height="500" />
-            </div>
-            <div class="author">
-                <div>@Html.DisplayFor(modelItem => item.ThanhVien.HoTen)</div>
-                <div>@Html.DisplayFor(modelItem => item.NgayTao)</div>
-            </div>
+
         </div>
     }
 </div>
-

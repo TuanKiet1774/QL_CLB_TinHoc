@@ -1,0 +1,98 @@
+﻿@model CLB_TinHoc_64131060.Models.DiemDanh
+
+@{
+    ViewBag.Title = "Xóa lịch sử điểm danh (Chủ nhiệm)";
+    Layout = "~/Views/Shared/_LayoutAdmin_64131060.cshtml";
+}
+
+<style>
+    .header {
+        margin-top: 150px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .body {
+        display: flex;
+        justify-content: center;
+    }
+
+    table {
+        width: 500px;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        padding: 8px;
+        border: 1px solid #ddd;
+        text-align: left;
+    }
+
+    th {
+        background-color: #f2f2f2;
+    }
+
+    .btn-item {
+        margin-bottom: 50px;
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn-back,
+    .btn-delete {
+        background-color: rgba(41,108,178,255);
+        padding: 5px;
+    }
+
+    .btn-delete{
+        background-color: red;
+    }
+
+    .btn-delete:hover{
+        font-weight: bold;
+        background-color: crimson;
+    }
+</style>
+
+<div class="header mb-3">
+    <h3>BẠN CÓ CHẮC CHẮN MUỐN XÓA LỊCH SỬ ĐIỂM DANH NÀY ???</h3>
+</div>
+
+<div class="body">
+    <table>
+        <tr>
+            <th>Nhóm</th>
+            <td>@Html.DisplayFor(model => model.NhomHocTap.TenNhom)</td>
+        </tr>
+        <tr>
+            <th>Thời gian</th>
+            <td>@Html.DisplayFor(model => model.NgayDiemDanh)</td>
+        </tr>
+        <tr>
+            <th>Thành viên</th>
+            <td>@Html.DisplayFor(model => model.ThanhVien.HoTen)</td>
+        </tr>
+        <tr>
+            <th>Trạng thái</th>
+            <td>@Html.DisplayFor(model => model.TrangThai)</td>
+        </tr>
+        <tr>
+            <th>Ghi chú</th>
+            <td>@Html.DisplayFor(model => model.GhiChu)</td>
+        </tr>
+    </table>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<center class="btn-item mt-3">
+    <div class="me-5">
+        <input type="submit" value="XÓA DỮ LIỆU" class="btn-delete btn-default text-white" />
+    </div>
+    <div class="btn-back ms-5">
+        @Html.ActionLink("QUAY VỀ", "DiemDanh_Admin_64131060")
+    </div>
+</center>
+}

@@ -1,0 +1,122 @@
+﻿@model CLB_TinHoc_64131060.Models.Email_64131060
+@{
+    ViewBag.Title = "Gửi mail";
+    Layout = "~/Views/Shared/_LayoutMember_64131060.cshtml";
+}
+
+<style>
+    .mail-box {
+        margin-top: 150px;
+        margin-bottom: 50px;
+        font-size: 20px;
+        display: flex;
+        justify-content: center;
+    }
+
+    table {
+        border: 1px solid black;
+        background-color: whitesmoke;
+        width: 500px;
+    }
+
+    th {
+        background-color: rgba(41,108,178,255);
+        font-family: "Oswald", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        font-style: normal;
+        text-align: center;
+    }
+
+    td {
+        padding-inline: 20px;
+    }
+
+    tr {
+        margin-block: 10px !important;
+    }
+
+    input {
+        padding: 10px !important;
+        margin-block: 5px;
+    }
+
+    .btn-send {
+        margin-block: 15px;
+        background-color: rgba(41,108,178,255);
+        color: white;
+        font-size: 15px;
+    }
+
+        .btn-send:hover {
+            color: lawngreen;
+            font-weight: bold;
+        }
+</style>
+
+<div class="mail-box">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <table style="margin: 10px">
+            <tr>
+                <th class="p-2" colspan="2">
+                    SOẠN MAIL
+                </th>
+            </tr>
+            <tr>
+                <td>
+                    <b>Gửi từ:</b>
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.From, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.From, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Mật khẩu:</b>
+                </td>
+                <td>
+                    @Html.PasswordFor(model => model.Password, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Gửi đến:</b>
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.To, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.To, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Tiêu đề: </b>
+                </td>
+                <td>
+                    @Html.EditorFor(model => model.Subject, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Subject, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <b>Nội dung:</b>
+                </td>
+                <td>
+                    @Html.TextAreaFor(model => model.Body, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+                </td>
+            </tr>
+            <tr>
+                <td>
+                </td>
+                <td>
+                    <input type="submit" value="GỬI MAIL" class="btn-send btn-default" />
+                </td>
+            </tr>
+        </table>
+    }
+</div>
+@Scripts.Render("~/bundles/jqueryval")

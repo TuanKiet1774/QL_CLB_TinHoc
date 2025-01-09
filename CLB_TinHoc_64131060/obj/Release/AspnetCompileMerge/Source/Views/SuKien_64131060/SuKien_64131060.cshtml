@@ -1,0 +1,57 @@
+﻿@model IEnumerable<CLB_TinHoc_64131060.Models.SuKien>
+
+@{
+    ViewBag.Title = "Trang sự kiện";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    var grid = new WebGrid(Model, canPage: true, canSort: false, defaultSort: "", rowsPerPage: 3);
+    @Scripts.Render("~/Scripts/jquery-1.6.2.min.js")
+}
+<style>
+    body{
+        font-size: 20px;
+    }
+
+    .alert-event {
+        font-family: "Oswald", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        margin-top: 150px;
+        margin-left: 20px;
+    }
+
+    .table-header th{
+        background-color: rgba(41,108,178,255);
+    }
+
+    tfoot {
+        font-size: 15px;
+    }
+
+    tfoot a{
+        color: black;
+    }
+
+    tfoot a:hover{
+        cursor: pointer;
+        color: red;
+    }
+
+    tfoot tr{
+        text-align: center;
+    }
+</style>
+
+<h3 class="alert-event">THÔNG TIN CÁC SỰ KIỆN CỦA CÂU LẠC BỘ</h3>
+
+@grid.GetHtml(
+    tableStyle: "table table-bordered table-hover",
+    headerStyle: "table-header",
+    alternatingRowStyle: "table-row-alternate",
+    columns: grid.Columns(
+        grid.Column("TenSuKien", header: "Tên sự kiện", format: @<text>@item.TenSuKien</text>),
+        grid.Column("MoTa", header: "Mô tả", format: @<text>@item.MoTa</text>),
+        grid.Column("NgayBatDau", header: "Ngày bắt đầu", format: @<text>@item.NgayBatDau.ToString("dd/MM/yyyy")</text>),
+        grid.Column("NgayKetThuc", header: "Ngày kết thúc", format: @<text>@item.NgayKetThuc.ToString("dd/MM/yyyy")</text>),
+        grid.Column("ThanhVien", header: "Thành viên phụ trách", format: @<text>@item.ThanhVien.HoTen</text>)
+)
+)

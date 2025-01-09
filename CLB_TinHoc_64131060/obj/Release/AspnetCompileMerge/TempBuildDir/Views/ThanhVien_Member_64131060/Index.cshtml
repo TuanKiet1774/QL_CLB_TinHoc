@@ -1,0 +1,58 @@
+﻿@model IEnumerable<CLB_TinHoc_64131060.Models.ThanhVien>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutMember_64131060.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.HoTen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MatKhau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayTao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VaiTro.TenVaiTro)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MatKhau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayTao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VaiTro.TenVaiTro)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaThanhVien }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaThanhVien }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaThanhVien })
+        </td>
+    </tr>
+}
+
+</table>

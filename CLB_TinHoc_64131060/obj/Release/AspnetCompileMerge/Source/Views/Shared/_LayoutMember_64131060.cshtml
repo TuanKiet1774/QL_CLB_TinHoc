@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    <link href="~/Content/StyleAdmin.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.2.0/css/all.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&family=Oswald:wght@200..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&display=swap" rel="stylesheet">
+    <style>
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        #menu {
+            display: flex;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000; /* Đảm bảo header nằm trên các thành phần khác */
+            padding: 10px 10px; /* Khoảng cách trong */
+        }
+
+        #content {
+            margin-top: 100px; /* Khoảng cách bằng chiều cao của header */
+        }
+
+        li {
+            font-size: 20px;
+        }
+    </style>
+
+</head>
+<body style="margin-top:0px;">
+    <div id="menu" style="display: flex; justify-content: space-between;">
+        <h3 style="font-weight: bold;">
+            <img src="~/Image/Logo_Empty.png" style="width: 90px; padding-bottom: 0px;" />
+            @Html.ActionLink("INFOTECH CLUB NTU", "../TrangChu_64131060/MemberPage_64131060", new { @class = "a" })
+        </h3>
+        <ul class="nemu-item" style="list-style: none; display: flex; padding-top: 50px;">
+            <li style="font-weight: bold;">@Html.ActionLink("GIỚI THIỆU", "../TrangChu_64131060/GioiThieu_MemberPage_64131060", new { @class = "a" })</li>
+            <li style="font-weight: bold;">@Html.ActionLink("TIN TỨC", "../BaiDang_Member_64131060/BaiDang_Member_64131060", new { @class = "a" })</li>
+            <li style="font-weight: bold;">@Html.ActionLink("SỰ KIỆN", "../SuKien_Member_64131060/TimKiemSuKien_Member_64131060", new { @class = "a" })</li>
+            <li style="font-weight: bold;">@Html.ActionLink("ĐIỂM DANH", "../DiemDanh_Member_64131060/Create", new { @class = "a" })</li>
+            <li style="font-weight: bold;">@Html.ActionLink("MAIL", "../Email_64131060/SendMail_Member_64131060", new { @class = "a" })</li>
+            <li style="font-weight: bold;">@Html.ActionLink("TRANG CÁ NHÂN", "../ThanhVien_Member_64131060/Member_Page_64131060", new { @class = "a" })</li>
+        </ul>
+    </div>
+    <div id="content">
+        @RenderBody()
+    </div>
+    <div id="footer">
+        <div style="padding-inline: 50px; display: flex; justify-content: space-between;">
+            <div style="text-align: center; font-size: 20px;">
+                <img src="~/Image/Logo.jpg" style="width: 130px; padding-bottom: 0px;border-radius: 50%" />
+                <div style="margin-top: 10px;">
+                    <b>CLB TIN HỌC KHOA CNTT - NTU</b> <br />
+                    <div>SẺ CHIA KIẾN THỨC - KẾT NỐI ĐAM MÊ</div>
+                </div>
+            </div>
+            <ul style="list-style: none;">
+                <li style="margin-bottom: 10px;">
+                    <b>THÔNG TIN CÁ NHÂN</b>
+                </li>
+                <li>
+                    <i class="fa-regular fa-user"></i>
+                    <b>Họ và Tên:</b> Phạm Tuấn Kiệt
+                </li>
+                <li>
+                    <i class="fa-solid fa-id-card"></i>
+                    <b>Mã số:</b> 64131060
+                </li>
+                <li>
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <b>Liên lạc:</b> 0333535952
+                </li>
+                <li>
+                    <i class="fa-regular fa-envelope"></i>
+                    <b>Email:</b> kiet.pt.64cntt@ntu.edu.vn
+                </li>
+            </ul>
+            <ul style="list-style: none;">
+                <li style="margin-bottom: 10px;">
+                    <b>THÔNG TIN</b>
+                </li>
+                <li>
+                    <i class="fa-regular fa-school"></i>
+                    <b>Trường:</b> Đại học Nha Trang
+                </li>
+                <li>
+                    <i class="fa-regular fa-map-location-dot"></i>
+                    <b>Địa chỉ:</b> 02 Nguyễn Đình Chiểu, Vĩnh Thọ,TP Nha Trang
+                </li>
+                <li>
+                    <i class="fa-solid fa-mobile-screen"></i>
+                    <b>Liên lạc:</b> 02583831149
+                </li>
+                <li>
+                    <i class="fa-regular fa-envelope"></i>
+                    <b>Email:</b> dhnt@ntu.edu.vn
+                </li>
+            </ul>
+        </div>
+        <div style="padding: 15px; height: fit-content; width: 100%; text-align: center; background-color: darkblue; margin-top: 30px;">
+            Copyright &copy; TuanKiet_64131060 - @DateTime.Now.Year
+        </div>
+    </div>
+</body>
+</html>

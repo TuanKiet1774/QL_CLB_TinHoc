@@ -1,0 +1,94 @@
+﻿@model CLB_TinHoc_64131060.Models.NhomHocTap
+
+@{
+    ViewBag.Title = "Xóa nhóm học tập (Chủ nhiệm)";
+    Layout = "~/Views/Shared/_LayoutAdmin_64131060.cshtml";
+}
+
+<style>
+    .body {
+        margin-top: 150px;
+        display: flex;
+        justify-content: center;
+    }
+
+    table {
+        border-collapse: collapse;
+        width: 500px;
+    }
+
+        table th, table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        table th {
+            background-color: rgba(41,108,178,255);
+            font-weight: bold;
+            color: white;
+        }
+
+    .btn-item {
+        margin-top: 10px;
+        margin-bottom: 50px;
+    }
+
+        .btn-item a {
+            color: white !important;
+        }
+
+            .btn-item a:hover {
+                color: lawngreen !important;
+            }
+
+    .btn-back, .btn-edit {
+        background-color: rgba(41,108,178,255);
+        color: white !important;
+    }
+</style>
+
+<div class="body">
+    <table class="table-bordered">
+        <tr>
+            <th>Mã nhóm</th>
+            <td>@Html.DisplayFor(model => model.MaNhom)</td>
+        </tr>
+        <tr>
+            <th>Nhóm học tập</th>
+            <td>@Html.DisplayFor(model => model.TenNhom)</td>
+        </tr>
+        <tr>
+            <th>Thành lập</th>
+            <td>@Html.DisplayFor(model => model.NgayTao)</td>
+        </tr>
+        <tr>
+            <th>Mô tả</th>
+            <td>@Html.DisplayFor(model => model.MoTa)</td>
+        </tr>
+        <tr>
+            <th>Quản viên</th>
+            <td>@Html.DisplayFor(model => model.ThanhVien.HoTen)</td>
+        </tr>
+        <tr>
+            <th>Danh sách thành viên</th>
+            <td>
+                @foreach (var thanhVien in Model.ThanhVienNhoms.Select(tvs => tvs.ThanhVien))
+                {
+                    @thanhVien.HoTen <br />
+                }
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+}

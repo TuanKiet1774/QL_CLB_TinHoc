@@ -1,0 +1,93 @@
+﻿@model CLB_TinHoc_64131060.Models.BaiDang
+
+@{
+    ViewBag.Title = "Chi tiết bài đăng (trợ giảng)";
+    Layout = "~/Views/Shared/_LayoutAssitant_64131060.cshtml";
+}
+
+<style>
+    .detail {
+        margin-top: 150px;
+        margin-bottom: 100px;
+        margin-inline: 450px;
+        font-size: 20px;
+    }
+
+    .post-item {
+        border: 1px solid black;
+        margin-top: 20px;
+        background-color: whitesmoke;
+    }
+
+    .author {
+        width: 100%;
+        font-size: 10px;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        padding: 10px;
+        border-top: 1px solid black;
+    }
+
+    .post-header {
+        background-color: rgba(41,108,178,255);
+        font-family: "Oswald", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        font-style: normal;
+        padding: 10px;
+    }
+
+    .post-content {
+        margin-inline: 20px;
+        margin-block: 10px;
+    }
+
+    .img, img {
+        text-align: center;
+        border-radius: 15px;
+        margin-bottom: 10px;
+    }
+
+    .btn-back,
+    .btn-edit {
+        background-color: rgba(41,108,178,255);
+        width: fit-content;
+        padding: 5px;
+        border: 1px solid black;
+    }
+
+    .btn-item{
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+</style>
+
+<div class="detail">
+    <div class="post-item">
+        <div class="post-header">
+            <h3>Tiêu đề: @Html.DisplayFor(modelItem => Model.TieuDe)</h3>
+        </div>
+        <div class="post-content">
+            Nội dung: @Html.DisplayFor(modelItem => Model.NoiDung)
+        </div>
+        <div class="img">
+            <img src="~/Image/@Html.DisplayFor(modelItem => Model.Anh)" alt="" width="500" height="500" />
+        </div>
+        <div class="author">
+            <div>Tác giả: @Html.DisplayFor(modelItem => Model.ThanhVien.HoTen)</div>
+            <div>Thời gian: @Html.DisplayFor(modelItem => Model.NgayTao)</div>
+        </div>
+    </div>
+    <div class="btn-item">
+        <div class="btn-edit">
+            @Html.ActionLink("CẬP NHẬT", "Edit", new { id = Model.MaBaiDang })
+        </div>
+        <div class="btn-back">
+            @Html.ActionLink("QUAY VỀ", "BaiDang_Assitant_64131060")
+        </div>
+    </div>
+</div>
+

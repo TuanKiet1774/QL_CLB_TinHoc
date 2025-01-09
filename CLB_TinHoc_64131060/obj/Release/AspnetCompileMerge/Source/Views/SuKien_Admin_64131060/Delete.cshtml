@@ -1,0 +1,123 @@
+﻿@model CLB_TinHoc_64131060.Models.SuKien
+
+@{
+    ViewBag.Title = "Xóa sự kiện (Chủ nhiệm)";
+    Layout = "~/Views/Shared/_LayoutAdmin_64131060.cshtml";
+}
+
+<style>
+    .body-detail {
+        margin-top: 150px;
+        margin-bottom: 50px;
+        margin-inline: 450px;
+        font-size: 20px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+    }
+
+    th, td {
+        border: 1px solid black;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: #296CB2;
+        color: white;
+    }
+
+    .btn-container {
+        margin-top: 20px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+
+    .btn-back, .btn-delete {
+        border: 1px solid black;
+        background-color: rgba(41,108,178,255);
+        padding: 5px;
+        text-decoration: none;
+        color: white !important;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    .btn {
+        font-weight: bold;
+        font-size: 20px;
+        color: white;
+        border: none;
+    }
+
+    .btn-back:hover {
+        color: lawngreen !important;
+    }
+
+    .btn-delete:hover {
+        color: black !important;
+        background-color: red;
+    }
+</style>
+
+<div class="body-detail">
+    <table>
+        <tr>
+            <th colspan="2" style="text-align: center;">
+                BẠN CÓ CHẮC CHẮN MUỐN XÓA SỰ KIỆN ?
+            </th>
+        </tr>
+        <tr>
+            <th>Mã sự kiện</th>
+            <td>@Html.DisplayFor(model => model.MaSuKien)</td>
+        </tr>
+        <tr>
+            <th>Tên sự kiện</th>
+            <td>@Html.DisplayFor(model => model.TenSuKien)</td>
+        </tr>
+        <tr>
+            <th>Mô tả</th>
+            <td>@Html.DisplayFor(model => model.MoTa)</td>
+        </tr>
+        <tr>
+            <th>Người tổ chức</th>
+            <td>@Html.DisplayFor(model => model.ThanhVien.HoTen)</td>
+        </tr>
+        <tr>
+            <th>Ngày bắt đầu</th>
+            <td>@Html.DisplayFor(model => model.NgayBatDau)</td>
+        </tr>
+        <tr>
+            <th>Ngày kết thúc</th>
+            <td>@Html.DisplayFor(model => model.NgayKetThuc)</td>
+        </tr>
+        <tr>
+            <th>Danh sách thành viên</th>
+            <td>
+                @foreach (var thanhVien in Model.ThanhVienSuKiens.Select(tvs => tvs.ThanhVien))
+                {
+                    @thanhVien.HoTen <br />
+                }
+            </td>
+        </tr>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="btn-item d-flex justify-content-between mt-4">
+            <div class="btn-delete">
+                <input type="submit" value="XÓA SỰ KIỆN" class="btn btn-default" />
+            </div>
+            <div class="btn-back">
+                @Html.ActionLink("QUAY VỀ", "TimKiemSuKien_Admin_64131060", null, new { @class = "btn btn-back text-white" })
+            </div>
+        </div>
+    }
+
+</div>

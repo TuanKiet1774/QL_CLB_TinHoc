@@ -1,0 +1,84 @@
+﻿@model CLB_TinHoc_64131060.Models.ThanhVien
+
+@{
+    ViewBag.Title = "Xóa thành viên (Chủ nhiệm)";
+    Layout = "~/Views/Shared/_LayoutAssitant_64131060.cshtml";
+}
+<style>
+    .table-body {
+        margin-top: 150px;
+        margin-bottom: 50px;
+    }
+
+    .header th {
+        background-color: rgba(41,108,178,255) !important;
+        color: white;
+    }
+
+    .btn-back, .btn-delete {
+        background-color: rgba(41,108,178,255);
+        border: 1px solid black;
+        margin-left: 10px;
+    }
+
+    a:hover {
+        color: lawngreen !important;
+        font-weight: bold;
+    }
+
+    .btn-delete:hover {
+        color: black !important;
+        background-color: red;
+    }
+</style>
+
+<div class="table-body">
+    <center><h3 style="color: red;">BẠN CÓ CHẮC LÀ MUỐN XÓA THÀNH VIÊN NÀY KHỎI CÂU LẠC BỘ ?</h3></center>
+    <table class="table table-bordered">
+        <thead class="header">
+            <tr>
+                <th>Thông tin</th>
+                <th>Chi tiết</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Mã số</th>
+                <td>@Html.DisplayFor(model => model.MaThanhVien)</td>
+            </tr>
+            <tr>
+                <th>Thành viên</th>
+                <td>@Html.DisplayFor(model => model.HoTen)</td>
+            </tr>
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Email)</th>
+                <td>@Html.DisplayFor(model => model.Email)</td>
+            </tr>
+            <tr>
+                <th>Mật khẩu</th>
+                <td>@Html.DisplayFor(model => model.MatKhau)</td>
+            </tr>
+            <tr>
+                <th>Thời gian tạo</th>
+                <td>@Html.DisplayFor(model => model.NgayTao)</td>
+            </tr>
+            <tr>
+                <th>Vai trò</th>
+                <td>@Html.DisplayFor(model => model.VaiTro.TenVaiTro)</td>
+            </tr>
+        </tbody>
+    </table>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="d-flex">
+            <div class="btn-delete form-actions no-color">
+                <input type="submit" value="XÓA THÀNH VIÊN" class="btn btn-default text-white" />
+            </div>
+            <div class="btn-back">
+                @Html.ActionLink("QUAY VỀ", "TimKiemTV_Admin_64131060", null, new { @class = "btn text-white" })
+            </div>
+        </div>
+
+    }
+</div>

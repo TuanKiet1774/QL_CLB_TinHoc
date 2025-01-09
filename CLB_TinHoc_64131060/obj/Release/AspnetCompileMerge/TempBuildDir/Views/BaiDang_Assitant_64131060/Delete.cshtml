@@ -1,0 +1,110 @@
+﻿@model CLB_TinHoc_64131060.Models.BaiDang
+
+@{
+    ViewBag.Title = "Xóa bài đăng (Trợ giảng)";
+    Layout = "~/Views/Shared/_LayoutAssitant_64131060.cshtml";
+}
+
+<style>
+    .detail {
+        margin-top: 150px;
+        margin-bottom: 100px;
+        margin-inline: 450px;
+        font-size: 20px;
+    }
+
+    .post-item {
+        border: 1px solid black;
+        margin-top: 20px;
+        background-color: whitesmoke;
+    }
+
+    .author {
+        width: 100%;
+        font-size: 10px;
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        padding: 10px;
+        border-top: 1px solid black;
+    }
+
+    .post-header {
+        background-color: rgba(41,108,178,255);
+        font-family: "Oswald", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        font-style: normal;
+        padding: 10px;
+    }
+
+    .post-content {
+        margin-inline: 20px;
+        margin-block: 10px;
+    }
+
+    .img, img {
+        text-align: center;
+        border-radius: 15px;
+        margin-bottom: 10px;
+    }
+
+    .btn-back,
+    .btn-delete {
+        background-color: rgba(41,108,178,255);
+        width: fit-content;
+        border: 1px solid black;
+    }
+
+    .btn-back {
+        padding: 5px;
+        font-size: 17px;
+    }
+
+    .btn-item {
+        margin-top: 10px;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .btn-delete:hover{
+        background-color: red;
+        font-weight: bold;
+        padding-inline: 5px;
+    }
+    .btn:hover {
+        color: black !important;
+    }
+</style>
+
+<div class="detail">
+    <center><h3><b style="color: red;">BẠN CÓ CHẮC CHẮN MUỐN XÓA BÀI ĐĂNG NÀY KHÔNG ?</b></h3></center>
+    <div class="post-item">
+        <div class="post-header">
+            <h3>@Html.DisplayFor(modelItem => Model.TieuDe)</h3>
+        </div>
+        <div class="post-content">
+            @Html.DisplayFor(modelItem => Model.NoiDung)
+        </div>
+        <div class="img">
+            <img src="~/Image/@Html.DisplayFor(modelItem => Model.Anh)" alt="" width="500" height="500" />
+        </div>
+        <div class="author">
+            <div>@Html.DisplayFor(modelItem => Model.ThanhVien.HoTen)</div>
+            <div>@Html.DisplayFor(modelItem => Model.NgayTao)</div>
+        </div>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="btn-item">
+            <div class="btn-delete">
+                <input type="submit" value="XÓA BÀI" class="btn btn-default text-white" />
+            </div>
+            <div class="btn-back">
+                @Html.ActionLink("QUAY VỀ", "BaiDang_Assitant_64131060")
+            </div>
+        </div>
+    }
+</div>

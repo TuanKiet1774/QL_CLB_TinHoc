@@ -1,0 +1,59 @@
+﻿@model CLB_TinHoc_64131060.Models.DiemDanh
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutMember_64131060.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DiemDanh</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayDiemDanh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayDiemDanh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TrangThai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TrangThai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.GhiChu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NhomHocTap.TenNhom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NhomHocTap.TenNhom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThanhVien.HoTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThanhVien.HoTen)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaDiemDanh }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

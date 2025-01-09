@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "Đăng ký thành công";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<style>
+    .Mail-Alert {
+        margin-top: 150px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .btn-item {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 50px;
+        margin-top: 10px;
+    }
+
+    .logo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+        .logo img {
+            border-radius: 50%;
+            width: 230px;
+            box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.5); /* Thêm bóng */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+            .logo img:hover {
+                transform: scale(1.05); /* Phóng to nhẹ khi hover */
+                box-shadow: 15px 15px 30px rgba(0, 0, 0, 0.6); /* Bóng nổi rõ hơn */
+            }
+
+    .btn-back,
+    .btn-main {
+        width: fit-content;
+        padding: 5px;
+        background-color: rgba(41,108,178,255);
+    }
+</style>
+
+<h1 class="Mail-Alert">ĐĂNG KÝ THÀNH CÔNG</h1>
+<div class="logo">
+    <img src="~/Image/Mail_ALert.jpg" />
+</div>
+<div class="btn-item">
+    <div class="btn-back me-5">
+        @Html.ActionLink("ĐĂNG NHẬP", "Login_64131060", "Login_64131060")
+    </div>
+    <div class="btn-main ms-5">
+        @Html.ActionLink("TRANG CHỦ", "TrangChu_64131060", "TrangChu_64131060")
+    </div>
+</div>

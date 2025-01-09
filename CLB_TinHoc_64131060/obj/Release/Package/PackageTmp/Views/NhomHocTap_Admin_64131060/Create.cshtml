@@ -1,0 +1,114 @@
+﻿@model CLB_TinHoc_64131060.Models.NhomHocTap
+
+@{
+    ViewBag.Title = "Thêm nhóm học tập (Chủ nhiệm)";
+    Layout = "~/Views/Shared/_LayoutAdmin_64131060.cshtml";
+}
+
+<style>
+    .body {
+        margin-top: 150px;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 50px;
+    }
+
+    .form-horizontal {
+        width: fit-content;
+        background-color: whitesmoke;
+        padding: 10px;
+    }
+
+    .form-group {
+        display: flex;
+        justify-content: space-around;
+        width: 450px;
+        margin-top: 10px;
+    }
+
+    .form-control {
+        padding: 10px;
+    }
+
+    .btn-create, .btn-back {
+        margin-left: 20px;
+        background-color: rgba(41,108,178,255);
+        width: fit-content;
+        margin-bottom: 10px;
+    }
+
+    .btn-back {
+        padding: 5px;
+        margin-left: 20px;
+        background-color: rgba(41,108,178,255);
+        width: fit-content;
+        margin-bottom: 10px;
+    }
+
+        .btn-create:hover, .btn-back:hover {
+            color: lawngreen !important;
+        }
+
+    .control-label {
+        font-weight: bold;
+        width: 150px;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="body">
+        <div class="form-horizontal">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.MaNhom, "Mã nhóm", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MaNhom, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MaNhom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TenNhom, "Tên nhóm", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.TenNhom, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.TenNhom, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.TroGiang, "Quản viên", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("TroGiang", null, "---Chọn quản viên---", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.TroGiang, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.NgayTao, "Thành lập", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.NgayTao, new { htmlAttributes = new { @class = "form-control", @Value = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") } })
+                    @Html.ValidationMessageFor(model => model.NgayTao, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.MoTa, "Mô tả", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-around mt-3">
+                <div class="btn-create col-md-offset-2 col-md-10">
+                    <input type="submit" value="THÊM NHÓM" class="btn btn-default text-white" />
+                </div>
+                <div class="btn-back">
+                    @Html.ActionLink("QUAY VỀ", "NhomHocTap_Admin_64131060")
+                </div>
+            </div>
+        </div>
+    </div>
+}

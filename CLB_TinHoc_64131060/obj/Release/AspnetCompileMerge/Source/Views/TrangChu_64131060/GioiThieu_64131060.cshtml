@@ -1,0 +1,142 @@
+﻿
+@{
+    ViewBag.Title = "Giới thiệu về câu lạc bộ";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<style>
+    .body {
+        margin-top: 150px;
+        margin-inline: 100px;
+        margin-bottom: 100px;
+    }
+
+    .info {
+        font-family: "Oswald", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        font-style: normal;
+        font-size: 50px;
+    }
+
+    .content{
+        font-size: 20px;
+    }
+
+    .member-item{
+        border-radius: 50%;
+    }
+
+    ul{
+        list-style: none;
+    }
+
+    ul li{
+        font-size: 20px;
+    }
+
+    .KTLT, .NMLT{
+        margin-block: 50px;
+    }
+
+    .member-name{
+        font-family: "Oswald", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        font-style: normal;
+        font-size: 30px;
+        margin-top: 110px;
+    }
+
+    .nhom{
+        font-family: "Oswald", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: bold;
+        font-style: normal;
+        font-size: 30px;
+    }
+</style>
+
+<div class="body">
+    <div class="info mb-4">
+        <b>Câu Lạc Bộ Tin Học - InFoTech Club NTU</b>
+    </div>
+    <div class="d-flex">
+        <div class="content me-4 w-50">
+            <b>InFoTech Club NTU - Câu Lạc Bộ Tin Học NTU</b> là một CLB học thuật trực thuộc Đoàn - Hội Khoa Công nghệ Thông tin NTU,
+            nơi giao lưu sinh hoạt của sinh viên CNTT Trường Đại Học Nha Trang. Câu lạc bộ hướng tới hỗ trợ các bạn sinh viên trong việc học tập là chính.
+            Bên cạnh đó còn tổ chức một số hoạt động giúp các bạn thị đua, củng cố và ôn luyện kiến thức.
+            Câu lạc bộ tin học NTU là nơi sẽ giúp bạn sinh viên vừa học vừa chơi, mở rộng các mối quan hệ, kỹ năng giúp ích cho các bạn sinh viên trong môi trường đại học
+        </div>
+        <img src="~/Image/Logo_Info.png" width="350" alt="..." class="ms-5">
+    </div>
+
+    <div class="info mb-4 mt-4">
+        <b>Ban Chủ Nhiệm</b>
+    </div>
+    <center class="nhom">Nhập Môn Lập Trình</center>
+    <div class="NMLT d-flex justify-content-between">
+        <div class="d-flex">
+            <img src="~/Image/Thanh_Thai.jpg" width="250" alt="..." title="Trần Thanh Thái" class="member-item">
+            <ul>
+                <li class="member-name">Trần Thanh Thái</li>
+                <li><i class="fa-solid fa-user"></i> Chủ nhiệm câu lạc bộ</li>
+                <li><i class="fa-solid fa-address-card"></i> Đẹp trai, học giỏi, thân thiện,...</li>
+                <li><i class="fa-solid fa-envelope"></i> thai.tt.64cntt@ntu.edu.vn</li>
+            </ul>
+        </div>
+        <div class="d-flex">
+            <img src="~/Image/Tuan_Kiet.jpg" width="250" alt="..." title="Phạm Tuấn Kiệt" class="member-item">
+            <ul>
+                <li class="member-name">Phạm Tuấn Kiệt</li>
+                <li><i class="fa-solid fa-user"></i> Trợ giảng nhóm NMLT</li>
+                <li><i class="fa-solid fa-address-card"></i> Dân đen, sẵn sàng hỗ trợ,...</li>
+                <li><i class="fa-solid fa-envelope"></i> kiet.pt.64cntt@ntu.edu.vn</li>
+            </ul>
+        </div>
+    </div>
+    <hr />
+    <center class="nhom">Kỹ Thuật Lập Trình</center>
+    <div class="KTLT d-flex justify-content-between">
+        <div class="d-flex">
+            <img src="~/Image/Duy_An.png" width="250" alt="..." title="Hoàng Duy An" class="member-item">
+            <ul>
+                <li class="member-name">Hoang Duy An</li>
+                <li><i class="fa-solid fa-user"></i> Trợ giảng nhóm KTLT</li>
+                <li><i class="fa-solid fa-address-card"></i> Đẹp trai, học cực kỳ giỏi,...</li>
+                <li><i class="fa-solid fa-envelope"></i> an.hd.64cntt@ntu.edu.vn</li>
+            </ul>
+        </div>
+        <div class="d-flex">
+            <img src="~/Image/Minh_Tri.jpg" width="250" alt="..." title="Vương Minh Trí" class="member-item">
+            <ul>
+                <li class="member-name">Vương Minh Trí</li>
+                <li><i class="fa-solid fa-user"></i> Trợ giảng nhóm KTLT</li>
+                <li><i class="fa-solid fa-address-card"></i> Đẹp trai, giỏi trùm, hiền lành...</li>
+                <li><i class="fa-solid fa-envelope"></i> tri.vm.64cntt@ntu.edu.vn</li>
+            </ul>
+        </div>
+    </div>
+    <hr />
+    <center class="nhom">Thiết Kế Giao Diện Web</center>
+    <div class="KTLT d-flex justify-content-between">
+        <div class="d-flex">
+            <img src="~/Image/Kiet_Kun.jpg" width="250" alt="..." title="Đỗ Tuấn Kiệt" class="member-item">
+            <ul>
+                <li class="member-name">Đỗ Tuấn Kiệt</li>
+                <li><i class="fa-solid fa-user"></i> Trợ giảng nhóm Web</li>
+                <li><i class="fa-solid fa-address-card"></i> Đẹp trai, học giỏi, tốt bụng...</li>
+                <li><i class="fa-solid fa-envelope"></i> kiet.dt.61cntt@ntu.edu.vn</li>
+            </ul>
+        </div>
+        <div class="d-flex">
+            <img src="~/Image/Ngoc_Tuan.jpg" width="250" alt="..." title="Trịnh Ngọc Tuấn" class="member-item">
+            <ul>
+                <li class="member-name">Trịnh Ngọc Tuấn</li>
+                <li><i class="fa-solid fa-user"></i> Trợ giảng nhóm Web</li>
+                <li><i class="fa-solid fa-address-card"></i> Đẹp trai, hiền lành,...</li>
+                <li><i class="fa-solid fa-envelope"></i> tuan.tn.64cntt@ntu.edu.vn</li>
+            </ul>
+        </div>
+    </div>
+</div>
